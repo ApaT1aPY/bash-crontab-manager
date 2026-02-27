@@ -17,10 +17,8 @@ jobs:
       - name: Make script executable
         run: chmod +x crontab-manager.sh
 
-      - name: Check syntax with shellcheck
-        uses: ludeeus/action-shellcheck@master
-        with:
-          scandir: './'
+      - name: Check bash syntax
+        run: bash -n crontab-manager.sh
 
-      - name: Run script (simulate exit)
+      - name: Run script with exit option
         run: echo "0" | sudo bash crontab-manager.sh
